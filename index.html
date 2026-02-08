@@ -1,36 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Ionic App</title>
-    
-    <base href="/" />
-    
-    <meta name="color-scheme" content="light dark" />
-    <meta
-      name="viewport"
-      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    
-    <link rel="manifest" href="/news_reader/manifest.json" />
-    
-    <link rel="shortcut icon" type="image/png" href="/news_reader/favicon.png" />
-    
-    <!-- add to homescreen for ios -->
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="Ionic App" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <script type="module" crossorigin src="/news_reader/assets/index-CivSDdTs.js"></script>
-    <link rel="stylesheet" crossorigin href="/news_reader/assets/index-qFzK4R9c.css">
-    <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
-    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
-    <script nomodule crossorigin id="vite-legacy-polyfill" src="/news_reader/assets/polyfills-legacy-C3tNzdpZ.js"></script>
-    <script nomodule crossorigin id="vite-legacy-entry" data-src="/news_reader/assets/index-legacy-CgJ8VcdJ.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
-  </body>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Lector de noticias</title>
+  <meta name="description" content="Lector de noticias con PWA">
+  <link rel="icon" href="/news_reader/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/news_reader/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/news_reader/apple-touch-icon.png">
+  <meta name="theme-color" content="#D3D1D1">
+  <script type="module" crossorigin src="/news_reader/assets/index-CivSDdTs.js"></script>
+  <link rel="stylesheet" crossorigin href="/news_reader/assets/index-qFzK4R9c.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+<link rel="manifest" href="/news_reader/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/news_reader/registerSW.js"></script></head>
+
+<body>
+  <div id="root"></div>
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/news_reader/assets/polyfills-legacy-C3tNzdpZ.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/news_reader/assets/index-legacy-CgJ8VcdJ.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+
 </html>
