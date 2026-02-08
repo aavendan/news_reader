@@ -51,13 +51,13 @@ export default defineConfig({
         runtimeCaching: [
           {
             // Intercepta todas las peticiones a esta API (ajusta según necesidad)
-            urlPattern: /^https:\/\/api\.open-meteo\.com\/.*$/,
-            handler: 'NetworkFirst',
+            urlPattern: /^https:\/\/news-reader-2acd6-default-rtdb\.firebaseio\.com\/.*$/,
+            handler: 'CacheFirst',
             options: {
-              cacheName: 'open-meteo-cache',
+              cacheName: 'firebase-cache',
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24, // 1 día
+                maxAgeSeconds: 60 * 60 * 24 * 5, // 5 días
               },
               cacheableResponse: {
                 statuses: [0, 200],

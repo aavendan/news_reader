@@ -82,7 +82,7 @@ const Tab1: React.FC = () => {
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Secciones de Noticias</IonTitle>
+            <IonTitle size="large">Descargar Noticias</IonTitle>
           </IonToolbar>
         </IonHeader>
 

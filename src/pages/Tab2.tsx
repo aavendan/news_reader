@@ -99,7 +99,7 @@ const Tab2: React.FC = () => {
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Noticias por Fecha</IonTitle>
+            <IonTitle size="large">Leer Noticias</IonTitle>
           </IonToolbar>
         </IonHeader>
         

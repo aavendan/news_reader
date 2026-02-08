@@ -208,6 +208,11 @@ async function fetchNewsByDateAndSection(fecha: string, seccion: string) {
     return Array.isArray(items) ? items : [items];
 }
 
-
-
-export { sendToFirebaseByDate, fetchAllSections, sanitizeKeys, fetchAvailableDates, fetchSectionsByDate, fetchNewsByDateAndSection };
+export {
+    sendToFirebaseByDate,
+    fetchAllSections,
+    sanitizeKeys,
+    fetchAvailableDates,
+    fetchSectionsByDate,
+    fetchNewsByDateAndSection,
+};

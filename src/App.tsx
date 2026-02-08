@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle, newspaperOutline, cloudDownloadOutline } from 'ionicons/icons';
+import { ellipse, square, triangle, newspaperOutline, cloudDownloadOutline, searchOutline } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -52,10 +52,10 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/news_reader">
+          <Route exact path="/tab1">
             <Tab1 />
           </Route>
-          <Route exact path="/tab2">
+          <Route exact path="/news_reader">
             <Tab2 />
           </Route>
           <Route path="/tab3">
@@ -66,17 +66,17 @@ const App: React.FC = () => (
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/news_reader">
+          <IonTabButton tab="tab1" href="/tab1">
             <IonIcon aria-hidden="true" icon={cloudDownloadOutline} />
             <IonLabel>Descargar</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
+          <IonTabButton tab="tab2" href="/news_reader">
             <IonIcon aria-hidden="true" icon={newspaperOutline} />
             <IonLabel>Leer</IonLabel>
           </IonTabButton>
           {/* <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+            <IonIcon aria-hidden="true" icon={searchOutline} />
+            <IonLabel>Buscador</IonLabel>
           </IonTabButton> */}
         </IonTabBar>
       </IonTabs>
