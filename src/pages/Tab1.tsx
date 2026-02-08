@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
+import { useState, useEffect } from "react";
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonAlert } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import { sendToFirebaseByDate, fetchAllSections, sanitizeKeys } from '../services/Loader';
 import './Tab1.css';
@@ -18,6 +18,29 @@ const Tab1: React.FC = () => {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<string>("");
+  const [showAlert, setShowAlert] = useState(false);
+
+  // Función para formatear la fecha en español
+  const getFormattedDate = () => {
+    const today = new Date();
+    const months = [
+      'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+      'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+    ];
+
+    const day = today.getDate();
+    const month = months[today.getMonth()];
+    const year = today.getFullYear();
+
+    return `${day} de ${month} del ${year}`;
+  };
+
+  // Detectar cuando las noticias se guardan exitosamente
+  useEffect(() => {
+    if (status.length > 0 && !status.startsWith("Error")) {
+      setShowAlert(true);
+    }
+  }, [status]);
 
   const handleLoadAndSave = async () => {
     setLoading(true);
@@ -41,7 +64,7 @@ const Tab1: React.FC = () => {
       // const fbResp = await sendToFirebase(payload); // POST con key automática
       const fbResp = await sendToFirebaseByDate(payload); // PUT por fecha
 
-      setStatus(`Guardado en Firebase. Respuesta: ${JSON.stringify(fbResp)}`);
+      setStatus(`Guardado en Firebase.`);
     } catch (e: any) {
       setStatus(`Error: ${e?.message ?? "desconocido"}`);
     } finally {
@@ -53,7 +76,7 @@ const Tab1: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Lector de Noticias</IonTitle>
+          <IonTitle>Descargar Noticias</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -64,7 +87,7 @@ const Tab1: React.FC = () => {
         </IonHeader>
 
         <div style={{ padding: '20px' }}>
-          <h2>El Universo</h2>
+          <h2 style={{ textAlign: 'center', paddingBottom: '5%' }}>El Universo</h2>
 
           <IonButton
             onClick={handleLoadAndSave} disabled={loading}
@@ -72,20 +95,34 @@ const Tab1: React.FC = () => {
             Cargar Noticias
           </IonButton>
 
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr style={{ borderBottom: '2px solid #ccc' }}>
-                <th style={{ padding: '10px', textAlign: 'left' }}>Sección</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((entry) => (
-                <tr key={entry.section} style={{ padding: 8, borderBottom: "1px solid #eee" }}>
-                  <td style={{ padding: '10px', textTransform: 'capitalize' }}>{entry.section}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {status.length > 0 && !status.startsWith("Error") && (
+            <>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr style={{ borderBottom: '2px solid #ccc' }}>
+                    <th style={{ padding: '10px', textAlign: 'left' }}>Secciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((entry) => (
+                    <tr key={entry.section} style={{ padding: 8, borderBottom: "1px solid #eee" }}>
+                      <td style={{ padding: '10px', textTransform: 'capitalize' }}>{entry.section}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+
+              <IonAlert
+                isOpen={showAlert}
+                onDidDismiss={() => setShowAlert(false)}
+                header="News reader"
+                message={`Noticias guardadas el ${getFormattedDate()}`}
+                buttons={['OK']}
+              />
+            </>
+          )}
+
         </div>
       </IonContent>
     </IonPage>
