@@ -52,7 +52,7 @@ export default defineConfig({
           {
             // Intercepta todas las peticiones a esta API (ajusta según necesidad)
             urlPattern: /^https:\/\/news-reader-2acd6-default-rtdb\.firebaseio\.com\/.*$/,
-            handler: 'CacheFirst',
+            handler: 'NetworkFirst',
             options: {
               cacheName: 'firebase-cache',
               expiration: {
